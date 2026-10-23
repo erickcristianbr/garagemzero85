@@ -470,7 +470,7 @@ if(nf&&comp.some(function(x){return x.id!=qed&&x.forn==f.get("forn")&&x.nf==nf})
 pc.sort(function(a,b){return a.venc<b.venc?-1:a.venc>b.venc?1:0});pc.forEach(function(p,i){p.n=i+1});
 D.doc("compras/"+qed).update({forn:f.get("forn"),nf:nf,emissao:f.get("emissao"),desc:its.map(function(i){return i.d}).join(", "),itens:its,total:tot/100,parc:pc}).then(function(){qed=null;document.activeElement&&document.activeElement.blur();render()}).catch(fail)}}}
 function fail(x){alert("Não foi possível salvar: "+(x&&x.message||x))}
-document.addEventListener("click",function(e){var t=e.target.closest("[data-t],[data-a]");if(!t)return;
+document.addEventListener("click",function(e){var t=e.target.closest("#nav [data-t],[data-a]");if(!t)return;
 if(t.dataset.t){tab=t.dataset.t;fed=null;ced=null;qed=null;eed=null;showCf=false;showFf=false;pvsel=null;render();return}
 var a=t.dataset.a,id=t.dataset.id,P;
 if(a=="tf"){showF=!showF;render()}
